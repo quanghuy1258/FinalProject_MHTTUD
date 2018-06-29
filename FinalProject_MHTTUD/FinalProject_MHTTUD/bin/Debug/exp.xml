@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Account>
+  <Full_Name></Full_Name>
+  <Birthday></Birthday>
+  <Phone_Number></Phone_Number>
+  <Address></Address>
+  <Passphrase_With_Salt>fJioNZrztCOvsStoD68lnAex+1GkTjIYgN3zUTVqyZxLi88xnXFFLlrpEoQN8KQkr8RQVjm5FtewktmQVId4LA==</Passphrase_With_Salt>
+  <Public_Key>&lt;RSAKeyValue&gt;&lt;Modulus&gt;08UmGdQMy7/L2M3BunxbO7MRV8/df3smdvOH4IZDrTdJCAIjmn3i5nCI6/MppCxcLWAQ00Y/pNK7BaWZhlZvgw==&lt;/Modulus&gt;&lt;Exponent&gt;AQAB&lt;/Exponent&gt;&lt;/RSAKeyValue&gt;</Public_Key>
+  <Private_Key>fJioNZrztCOvsStoD68lnAex+1GkTjIYgN3zUTVqyZxLi88xnXFFLlrpEoQN8KQkr8RQVjm5FtewktmQVId4LA==</Private_Key>
+</Account>
