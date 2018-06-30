@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -16,12 +17,14 @@ namespace FinalProject_MHTTUD
             if (this.emailTextBox.Text == "")
             {
                 this.warningMsgLabel.Text = "Waring: Empty Email not allowed";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 return false;
             }
             if (!Regex.IsMatch(this.emailTextBox.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
             {
                 this.warningMsgLabel.Text = "Waring: Not a Valid Email Address";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 return false;
             }
@@ -33,12 +36,14 @@ namespace FinalProject_MHTTUD
             if (this.passwordTextBox.Text == "")
             {
                 this.warningMsgLabel.Text = "Waring: Empty Password not allowed";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 return false;
             }
             if (this.passwordTextBox.Text != this.confirmPasswordTextBox.Text)
             {
                 this.warningMsgLabel.Text = "Waring: Password does not match the confirm password";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 return false;
             }
@@ -50,6 +55,7 @@ namespace FinalProject_MHTTUD
             if (this._db == null)
             {
                 this.warningMsgLabel.Text = "Waring: Null Database";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 this.emailTextBox.Text = "";
                 return false;
@@ -61,6 +67,7 @@ namespace FinalProject_MHTTUD
                 if (this._db[i].getEmailAddress() == this.emailTextBox.Text)
                 {
                     this.warningMsgLabel.Text = "Waring: Email already exists";
+                    this.warningMsgLabel.ForeColor = Color.Red;
                     this.warningMsgLabel.Visible = true;
                     return false;
                 }
@@ -73,6 +80,16 @@ namespace FinalProject_MHTTUD
                 this.addressTextBox.Text)
                 .generateKey(this.passwordTextBox.Text, (int)this.keySizeComboBox.SelectedItem));
             return true;
+        }
+        private int levelPasswordSecurity(string password)
+        {
+            int level = 0;
+            level += (password.Length >= 8) ? 1 : 0;
+            level += (Regex.IsMatch(password, @"(?=.*[a-z])")) ? 1 : 0;
+            level += (Regex.IsMatch(password, @"(?=.*[A-Z])")) ? 1 : 0;
+            level += (Regex.IsMatch(password, @"(?=.*[0-9])")) ? 1 : 0;
+            level += (Regex.IsMatch(password, @"(?=.*[!@#$&*])")) ? 1 : 0;
+            return level;
         }
 
         public RegisterForm(ref List<Account> db)
@@ -127,7 +144,12 @@ namespace FinalProject_MHTTUD
 
         private void passwordTextBox_TextChanged(object sender, EventArgs e)
         {
-            checkPasswordConstraints();
+            int level = levelPasswordSecurity(this.passwordTextBox.Text);
+            this.warningMsgLabel.Text = "Password Strength: " + new string('*', level + 1);
+            if (level < 2) this.warningMsgLabel.ForeColor = Color.Red;
+            else if (level < 4) this.warningMsgLabel.ForeColor = Color.Yellow;
+            else this.warningMsgLabel.ForeColor = Color.Green;
+            this.warningMsgLabel.Visible = true;
         }
 
         private void confirmPasswordTextBox_TextChanged(object sender, EventArgs e)

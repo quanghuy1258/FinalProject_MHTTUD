@@ -61,7 +61,7 @@ namespace FinalProject_MHTTUD
                     return true;
                 }
             }
-            this.warningMsgLabel.Text = "Waring: Wrong email or Password";
+            this.warningMsgLabel.Text = "Waring: Wrong Email or Password";
             this.warningMsgLabel.Visible = true;
             return false;
         }

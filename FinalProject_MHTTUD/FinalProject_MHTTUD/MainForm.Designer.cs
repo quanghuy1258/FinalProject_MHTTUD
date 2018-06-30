@@ -60,6 +60,7 @@
             this.signButton = new System.Windows.Forms.Button();
             this.verifyButton = new System.Windows.Forms.Button();
             this.compressOneFileCheckBox = new System.Windows.Forms.CheckBox();
+            this.contactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +95,7 @@
             this.databaseImportToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.ShowShortcutKeys = false;
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.importToolStripMenuItem.Text = "I&mport...";
             // 
             // accountImportToolStripMenuItem
@@ -118,7 +119,7 @@
             this.databaseExportToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.ShowShortcutKeys = false;
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportToolStripMenuItem.Text = "E&xport...";
             // 
             // accountExportToolStripMenuItem
@@ -155,7 +156,7 @@
             this.signInToolStripMenuItem.Name = "signInToolStripMenuItem";
             this.signInToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
             this.signInToolStripMenuItem.ShowShortcutKeys = false;
-            this.signInToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.signInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.signInToolStripMenuItem.Text = "Sign &In";
             this.signInToolStripMenuItem.Click += new System.EventHandler(this.signInToolStripMenuItem_Click);
             // 
@@ -164,41 +165,42 @@
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
             this.registerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
             this.registerToolStripMenuItem.ShowShortcutKeys = false;
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.registerToolStripMenuItem.Text = "&Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // editInfoToolStripMenuItem
             // 
             this.editInfoToolStripMenuItem.Name = "editInfoToolStripMenuItem";
             this.editInfoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.E)));
             this.editInfoToolStripMenuItem.ShowShortcutKeys = false;
-            this.editInfoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.editInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editInfoToolStripMenuItem.Text = "&Edit Information";
             this.editInfoToolStripMenuItem.Click += new System.EventHandler(this.editInfoToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // signOutToolStripMenuItem
             // 
             this.signOutToolStripMenuItem.Name = "signOutToolStripMenuItem";
             this.signOutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
             this.signOutToolStripMenuItem.ShowShortcutKeys = false;
-            this.signOutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.signOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.signOutToolStripMenuItem.Text = "Sign &Out";
             this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contactToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.H)));
@@ -210,7 +212,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
             this.aboutToolStripMenuItem.ShowShortcutKeys = false;
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -228,7 +230,7 @@
             this.accountListBox.Name = "accountListBox";
             this.accountListBox.Size = new System.Drawing.Size(157, 108);
             this.accountListBox.Sorted = true;
-            this.accountListBox.TabIndex = 1;
+            this.accountListBox.TabIndex = 3;
             // 
             // accountLabel
             // 
@@ -236,7 +238,7 @@
             this.accountLabel.Location = new System.Drawing.Point(448, 80);
             this.accountLabel.Name = "accountLabel";
             this.accountLabel.Size = new System.Drawing.Size(47, 13);
-            this.accountLabel.TabIndex = 2;
+            this.accountLabel.TabIndex = 14;
             this.accountLabel.Text = "Account";
             // 
             // pathLabel
@@ -245,7 +247,7 @@
             this.pathLabel.Location = new System.Drawing.Point(12, 30);
             this.pathLabel.Name = "pathLabel";
             this.pathLabel.Size = new System.Drawing.Size(29, 13);
-            this.pathLabel.TabIndex = 3;
+            this.pathLabel.TabIndex = 10;
             this.pathLabel.Text = "Path";
             // 
             // pathTextBox
@@ -255,14 +257,14 @@
             this.pathTextBox.Name = "pathTextBox";
             this.pathTextBox.ReadOnly = true;
             this.pathTextBox.Size = new System.Drawing.Size(367, 20);
-            this.pathTextBox.TabIndex = 4;
+            this.pathTextBox.TabIndex = 11;
             // 
             // browseButton
             // 
             this.browseButton.Location = new System.Drawing.Point(420, 27);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(75, 23);
-            this.browseButton.TabIndex = 5;
+            this.browseButton.TabIndex = 1;
             this.browseButton.Text = "Browse...";
             this.browseButton.UseVisualStyleBackColor = true;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
@@ -273,7 +275,7 @@
             this.filesDirectoriesTreeView.Location = new System.Drawing.Point(12, 96);
             this.filesDirectoriesTreeView.Name = "filesDirectoriesTreeView";
             this.filesDirectoriesTreeView.Size = new System.Drawing.Size(320, 212);
-            this.filesDirectoriesTreeView.TabIndex = 6;
+            this.filesDirectoriesTreeView.TabIndex = 2;
             this.filesDirectoriesTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.filesDirectoriesTreeView_NodeMouseClick);
             this.filesDirectoriesTreeView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.filesDirectoriesTreeView_MouseDown);
             // 
@@ -283,7 +285,7 @@
             this.filesDirectoriesLabel.Location = new System.Drawing.Point(12, 80);
             this.filesDirectoriesLabel.Name = "filesDirectoriesLabel";
             this.filesDirectoriesLabel.Size = new System.Drawing.Size(83, 13);
-            this.filesDirectoriesLabel.TabIndex = 7;
+            this.filesDirectoriesLabel.TabIndex = 13;
             this.filesDirectoriesLabel.Text = "Files/Directories";
             // 
             // browseProgressBar
@@ -291,7 +293,7 @@
             this.browseProgressBar.Location = new System.Drawing.Point(12, 54);
             this.browseProgressBar.Name = "browseProgressBar";
             this.browseProgressBar.Size = new System.Drawing.Size(483, 23);
-            this.browseProgressBar.TabIndex = 8;
+            this.browseProgressBar.TabIndex = 12;
             // 
             // compressCheckBox
             // 
@@ -299,7 +301,7 @@
             this.compressCheckBox.Location = new System.Drawing.Point(338, 210);
             this.compressCheckBox.Name = "compressCheckBox";
             this.compressCheckBox.Size = new System.Drawing.Size(126, 17);
-            this.compressCheckBox.TabIndex = 9;
+            this.compressCheckBox.TabIndex = 4;
             this.compressCheckBox.Text = "Compress Mode (Zip)";
             this.compressCheckBox.UseVisualStyleBackColor = true;
             this.compressCheckBox.CheckedChanged += new System.EventHandler(this.compressCheckBox_CheckedChanged);
@@ -309,7 +311,7 @@
             this.encryptButton.Location = new System.Drawing.Point(338, 257);
             this.encryptButton.Name = "encryptButton";
             this.encryptButton.Size = new System.Drawing.Size(75, 23);
-            this.encryptButton.TabIndex = 10;
+            this.encryptButton.TabIndex = 6;
             this.encryptButton.Text = "Encrypt";
             this.encryptButton.UseVisualStyleBackColor = true;
             this.encryptButton.Click += new System.EventHandler(this.encryptButton_Click);
@@ -319,7 +321,7 @@
             this.decryptButton.Location = new System.Drawing.Point(420, 258);
             this.decryptButton.Name = "decryptButton";
             this.decryptButton.Size = new System.Drawing.Size(75, 23);
-            this.decryptButton.TabIndex = 11;
+            this.decryptButton.TabIndex = 7;
             this.decryptButton.Text = "Decrypt";
             this.decryptButton.UseVisualStyleBackColor = true;
             this.decryptButton.Click += new System.EventHandler(this.decryptButton_Click);
@@ -329,7 +331,7 @@
             this.signButton.Location = new System.Drawing.Point(338, 288);
             this.signButton.Name = "signButton";
             this.signButton.Size = new System.Drawing.Size(75, 23);
-            this.signButton.TabIndex = 12;
+            this.signButton.TabIndex = 8;
             this.signButton.Text = "Sign";
             this.signButton.UseVisualStyleBackColor = true;
             this.signButton.Click += new System.EventHandler(this.signButton_Click);
@@ -339,7 +341,7 @@
             this.verifyButton.Location = new System.Drawing.Point(420, 288);
             this.verifyButton.Name = "verifyButton";
             this.verifyButton.Size = new System.Drawing.Size(75, 23);
-            this.verifyButton.TabIndex = 13;
+            this.verifyButton.TabIndex = 9;
             this.verifyButton.Text = "Verify";
             this.verifyButton.UseVisualStyleBackColor = true;
             this.verifyButton.Click += new System.EventHandler(this.verifyButton_Click);
@@ -350,9 +352,18 @@
             this.compressOneFileCheckBox.Location = new System.Drawing.Point(338, 234);
             this.compressOneFileCheckBox.Name = "compressOneFileCheckBox";
             this.compressOneFileCheckBox.Size = new System.Drawing.Size(130, 17);
-            this.compressOneFileCheckBox.TabIndex = 14;
+            this.compressOneFileCheckBox.TabIndex = 5;
             this.compressOneFileCheckBox.Text = "Compress To One File";
             this.compressOneFileCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // contactToolStripMenuItem
+            // 
+            this.contactToolStripMenuItem.Name = "contactToolStripMenuItem";
+            this.contactToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
+            this.contactToolStripMenuItem.ShowShortcutKeys = false;
+            this.contactToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.contactToolStripMenuItem.Text = "&Contact";
+            this.contactToolStripMenuItem.Click += new System.EventHandler(this.contactToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -420,6 +431,7 @@
         private System.Windows.Forms.Button signButton;
         private System.Windows.Forms.Button verifyButton;
         private System.Windows.Forms.CheckBox compressOneFileCheckBox;
+        private System.Windows.Forms.ToolStripMenuItem contactToolStripMenuItem;
     }
 }
 

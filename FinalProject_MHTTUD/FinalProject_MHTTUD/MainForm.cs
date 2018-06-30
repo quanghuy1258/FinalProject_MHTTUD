@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
@@ -130,6 +131,7 @@ namespace FinalProject_MHTTUD
             ToolStripMenuItem menuPaste = new ToolStripMenuItem("Paste") { Name = "menuPaste" };
             ToolStripMenuItem menuDelete = new ToolStripMenuItem("Delete") { Name = "menuDelete" };
             ToolStripMenuItem menuRename = new ToolStripMenuItem("Rename") { Name = "menuRename" };
+            ToolStripMenuItem menuNewFolder = new ToolStripMenuItem("New Folder") { Name = "menuNewFolder" };
             menuCut.Click += new EventHandler(delegate (object o, EventArgs a)
             {
                 TreeNode currentNode = this.filesDirectoriesTreeView.SelectedNode;
@@ -284,7 +286,27 @@ namespace FinalProject_MHTTUD
                     }
                 }
             });
-            rightClickMenu.Items.AddRange(new ToolStripItem[] { menuCut, menuCopy, menuPaste, new ToolStripSeparator(), menuDelete, menuRename });
+            menuNewFolder.Click += new EventHandler(delegate (object o, EventArgs a) {
+                TreeNode selectedNode = this.filesDirectoriesTreeView.SelectedNode;
+                if (selectedNode.BackColor != Color.Yellow)
+                {
+                    MessageBox.Show("Cannot make new folder in this file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int i = 0;
+                while (true)
+                {
+                    if (Directory.Exists(selectedNode.FullPath + "\\" + "New Folder " + i.ToString()))
+                    {
+                        i++;
+                        continue;
+                    }
+                    Directory.CreateDirectory(selectedNode.FullPath + "\\" + "New Folder " + i.ToString());
+                    selectedNode.Nodes.Insert(0, new TreeNode("New Folder " + i.ToString()) { BackColor = Color.Yellow });
+                    return;
+                }
+            });
+            rightClickMenu.Items.AddRange(new ToolStripItem[] { menuCut, menuCopy, menuPaste, new ToolStripSeparator(), menuDelete, menuRename, new ToolStripSeparator(), menuNewFolder });
         }
         private void copyAll(DirectoryInfo source, DirectoryInfo target)
         {
@@ -516,8 +538,13 @@ namespace FinalProject_MHTTUD
             if (e.Button == MouseButtons.Right && e.Node.FullPath != this.pathTextBox.Text)
             {
                 ToolStripMenuItem menuPaste = (ToolStripMenuItem)rightClickMenu.Items["menuPaste"];
-                menuPaste.Enabled = true;
-                if (e.Node.BackColor != Color.Yellow) menuPaste.Enabled = false;
+                ToolStripMenuItem menuNewFolder = (ToolStripMenuItem)rightClickMenu.Items["menuNewFolder"];
+                menuPaste.Enabled = menuNewFolder.Enabled = true;
+                if (e.Node.BackColor != Color.Yellow)
+                {
+                    menuPaste.Enabled = false;
+                    menuNewFolder.Enabled = false;
+                }
                 if (clipboard.Item1 != "Cut" && clipboard.Item1 != "Copy") menuPaste.Enabled = false;
                 this.filesDirectoriesTreeView.SelectedNode = e.Node;
                 this.filesDirectoriesTreeView.ContextMenuStrip = rightClickMenu;
@@ -806,12 +833,12 @@ namespace FinalProject_MHTTUD
                         {
                             if (Account.verifyData(owner.getPublicKey(), data, sig))
                             {
-                                successList.Add(fileInfo.FullName + " | " + owner.email);
+                                successList.Add(fileInfo.FullName + " | " + openFileDialog.FileName + " | " + owner.email);
                                 return;
                             }
                         }
                     }
-                    successList.Add(path);
+                    failureList.Add(path);
                 }
                 catch (Exception ex)
                 {
@@ -833,6 +860,11 @@ namespace FinalProject_MHTTUD
         {
             this.compressOneFileCheckBox.Checked = false;
             this.compressOneFileCheckBox.Enabled = this.compressCheckBox.Checked;
+        }
+
+        private void contactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("mailto:1512102@student.hcmus.edu.vn,1512205@student.hcmus.edu.vn?subject=%5BFinal%20Project%20-%20MHTTUD%5D%20-%20");
         }
     }
 }

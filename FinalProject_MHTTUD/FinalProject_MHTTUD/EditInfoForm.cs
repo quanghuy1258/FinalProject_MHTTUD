@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace FinalProject_MHTTUD
@@ -17,6 +19,7 @@ namespace FinalProject_MHTTUD
             if (this.passwordTextBox.Text == "")
             {
                 this.warningMsgLabel.Text = "Waring: Empty Password not allowed";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 return false;
             }
@@ -28,12 +31,14 @@ namespace FinalProject_MHTTUD
             if (this.newPasswordTextBox.Text == "")
             {
                 this.warningMsgLabel.Text = "Waring: Empty New Password not allowed";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 return false;
             }
             if (this.newPasswordTextBox.Text != this.confirmPasswordTextBox.Text)
             {
                 this.warningMsgLabel.Text = "Waring: New Password does not match the confirm password";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 return false;
             }
@@ -45,6 +50,7 @@ namespace FinalProject_MHTTUD
             if (this._db == null)
             {
                 this.warningMsgLabel.Text = "Waring: Null Database";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 this.emailTextBox.Text = "";
                 return false;
@@ -74,6 +80,16 @@ namespace FinalProject_MHTTUD
             }
             else this.saveButton.Enabled = false;
         }
+        private int levelPasswordSecurity(string password)
+        {
+            int level = 0;
+            level += (password.Length >= 8) ? 1 : 0;
+            level += (Regex.IsMatch(password, @"(?=.*[a-z])")) ? 1 : 0;
+            level += (Regex.IsMatch(password, @"(?=.*[A-Z])")) ? 1 : 0;
+            level += (Regex.IsMatch(password, @"(?=.*[0-9])")) ? 1 : 0;
+            level += (Regex.IsMatch(password, @"(?=.*[!@#$&*])")) ? 1 : 0;
+            return level;
+        }
 
         public EditInfoForm(ref List<Account> db, string email)
         {
@@ -102,6 +118,7 @@ namespace FinalProject_MHTTUD
             if (this._db == null)
             {
                 this.warningMsgLabel.Text = "Waring: Null Database";
+                this.warningMsgLabel.ForeColor = Color.Red;
                 this.warningMsgLabel.Visible = true;
                 this.emailTextBox.Text = "";
                 return;
@@ -128,6 +145,7 @@ namespace FinalProject_MHTTUD
                 }
             }
             this.warningMsgLabel.Text = "Waring: Wrong email or Password";
+            this.warningMsgLabel.ForeColor = Color.Red;
             this.warningMsgLabel.Visible = true;
         }
 
@@ -173,7 +191,12 @@ namespace FinalProject_MHTTUD
 
         private void newPasswordTextBox_TextChanged(object sender, EventArgs e)
         {
-            checkNewPasswordConstraints();
+            int level = levelPasswordSecurity(this.newPasswordTextBox.Text);
+            this.warningMsgLabel.Text = "Password Strength: " + new string('*', level + 1);
+            if (level < 2) this.warningMsgLabel.ForeColor = Color.Red;
+            else if (level < 4) this.warningMsgLabel.ForeColor = Color.Yellow;
+            else this.warningMsgLabel.ForeColor = Color.Green;
+            this.warningMsgLabel.Visible = true;
         }
 
         private void confirmPasswordTextBox_TextChanged(object sender, EventArgs e)

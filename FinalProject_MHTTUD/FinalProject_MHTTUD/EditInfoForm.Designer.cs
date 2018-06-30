@@ -317,6 +317,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditInfoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditInfoForm_FormClosing);
             this.ResumeLayout(false);
